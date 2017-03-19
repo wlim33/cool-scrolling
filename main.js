@@ -12,7 +12,7 @@ function makeBoxes(numberOfBoxes) {
         h = (h + goldenRatioConjugate) % 1;
         newBlock.style.backgroundColor = rgbString;
 
-        document.body.appendChild(newBlock);
+        document.getElementById("center").appendChild(newBlock);
     }
 
 }

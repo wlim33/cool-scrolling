@@ -4,25 +4,34 @@ div#title {
     padding-top: 15vh;
     font-size: 20vh;
     text-align: center;
-    text-shadow: .55vh .55vh grey;
 
+}
+div#center {
+    width: 152vh;
+    margin-left: 18.5vh;
+    margin-right: 15vh;
 }
 
 
 .square {
-    height: 34vh;
-    width: 34vh;
+    height: 34.2vh;
+    width: 34.2vh;
     border-radius: 3.75vh;
     display: inline-block;
-    box-shadow: 10px 10px 5px darkslategrey;
+    box-shadow: .45vh .45vh .25vh black;
     opacity: 1.0;
-    margin: 1.5vh;
+    margin: 1.8vh;
     animation-name: entrance;
     animation-duration: 3s;
+    align-self: center;
 }
 
 body {
     background-color: darkslategrey;
+}
+
+::-webkit-scrollbar {
+    display: none;
 }
 
 @-webkit-keyframes entrance {
