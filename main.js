@@ -1,20 +1,49 @@
 var totalBoxes = 100;
+var top  = window.pageYOffset || document.documentElement.scrollTop;
+
 
 function makeBoxes(numberOfBoxes) {
     var goldenRatioConjugate =  0.618033988749895;
-    var h = Math.random();
+    var hue = Math.random();
 
     for (var i = 0; i < numberOfBoxes; i++) {
-        var newBlock = document.createElement("div");
-        newBlock.className = "square";
-        var rgb = hsvToRgb(h, 0.5, 0.95);
-        var rgbString = "rgb(" + rgb[0] + ", " + rgb[1] + ", " + rgb[2] + ")";
-        h = (h + goldenRatioConjugate) % 1;
-        newBlock.style.backgroundColor = rgbString;
-
-        document.getElementById("center").appendChild(newBlock);
+        hue = (addBox(hue) + goldenRatioConjugate) % 1;
     }
+}
 
+function addBox(hue) {
+    var newBlock = document.createElement("div");
+    newBlock.className = "square";
+    var rgb = hsvToRgb(hue, 0.5, 0.95);
+    newBlock.style.backgroundColor = "rgb(" + rgb[0] + ", " + rgb[1] + ", " + rgb[2] + ")";
+
+    addPos(newBlock); //to see when the box is on screen
+
+    document.getElementById("center").appendChild(newBlock);
+    return hue;
+}
+
+//function elementIsOnscreen(element) {}
+
+
+function addPos(element) {
+    element.innerHTML = getPos(element);
+}
+
+//NEED TO FIX
+function getPos(element) {
+    var yPos = 0;
+    while (element) {
+        if (element.tagName == "BODY") {
+            var y = element.scrollTop || document.documentElement.scrollTop;
+            yPos = yPos + (element.offsetTop - y + el.clientTop);
+        } else {
+            yPos = yPos + (element.offsetTop - element.scrollTop + element.clientTop);
+        }
+
+        element = element.offsetParent;
+    }
+    return yPos;
 }
 
 function hsvToRgb(h, s, v) {
@@ -57,6 +86,7 @@ function hsvToRgb(h, s, v) {
 
 
 window.onload = makeBoxes(totalBoxes);
+
 
 
 
