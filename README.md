@@ -1,6 +1,7 @@
-# scroll-fade
+#Cool scrolling
 
-My own implementation of scrollreveal (https://scrollrevealjs.org/) as an exercise in js. No jQuery!
+My own implementation of scrollreveal (https://scrollrevealjs.org/) as an exercise in js. 
+No jQuery and no looking at the original code!
 
 
-Try it here: https://rawgit.com/wlim33/scroll-fade/master/index.html
+What I have so far: https://rawgit.com/wlim33/scroll-fade/master/index.html

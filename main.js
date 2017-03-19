@@ -1,25 +1,30 @@
 var totalBoxes = 100;
-var top  = window.pageYOffset || document.documentElement.scrollTop;
+var saturation = 0.5;
+var value = 0.95;
+var goldenRatio = 1.61803398875;
+
+var windowY  = window.pageYOffset || document.documentElement.scrollTop;
+
 
 
 function makeBoxes(numberOfBoxes) {
-    var goldenRatioConjugate =  0.618033988749895;
     var hue = Math.random();
 
     for (var i = 0; i < numberOfBoxes; i++) {
-        hue = (addBox(hue) + goldenRatioConjugate) % 1;
+        hue = (addBox(hue) + 1 / goldenRatio) % 1;
     }
 }
 
 function addBox(hue) {
     var newBlock = document.createElement("div");
     newBlock.className = "square";
-    var rgb = hsvToRgb(hue, 0.5, 0.95);
+    var rgb = hsvToRgb(hue, saturation, value);
     newBlock.style.backgroundColor = "rgb(" + rgb[0] + ", " + rgb[1] + ", " + rgb[2] + ")";
 
     addPos(newBlock); //to see when the box is on screen
 
     document.getElementById("center").appendChild(newBlock);
+
     return hue;
 }
 
