@@ -11,10 +11,13 @@ function makeBoxes(numberOfBoxes) {
         var rgbString = "rgb(" + rgb[0] + ", " + rgb[1] + ", " + rgb[2] + ")";
         h = (h + goldenRatioConjugate) % 1;
         newBlock.style.backgroundColor = rgbString;
+
         document.body.appendChild(newBlock);
     }
 
 }
+
+
 
 
 function hsvToRgb(h, s, v) {

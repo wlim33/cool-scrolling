@@ -1,6 +1,26 @@
 .square {
-    height: 300px;
-    width: 300px;
+    height: 36vh;
+    width: 36vh;
+    border-radius: 3.75vh;
     display: inline-block;
-    margin: 5px;
+    opacity: 1.0;
+    margin: .75vh;
+    animation-name: entrance;
+    animation-duration: 2s;
+}
+
+body {
+    background-color: darkslategrey;
+}
+
+@-webkit-keyframes entrance {
+    from {
+        opacity: 0.0;
+    }
+    to {
+        opacity: 1.0;
+    }
+}
+.square div:hover {
+    background-color: black;
 }
