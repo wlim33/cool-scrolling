@@ -1,12 +1,24 @@
+div#title {
+    Font-family: "Comic Sans MS", cursive, sans-serif;
+    height: 52vh;
+    padding-top: 15vh;
+    font-size: 20vh;
+    text-align: center;
+    text-shadow: .55vh .55vh grey;
+
+}
+
+
 .square {
-    height: 36vh;
-    width: 36vh;
+    height: 34vh;
+    width: 34vh;
     border-radius: 3.75vh;
     display: inline-block;
+    box-shadow: 10px 10px 5px darkslategrey;
     opacity: 1.0;
-    margin: .75vh;
+    margin: 1.5vh;
     animation-name: entrance;
-    animation-duration: 2s;
+    animation-duration: 3s;
 }
 
 body {
@@ -20,7 +32,4 @@ body {
     to {
         opacity: 1.0;
     }
-}
-.square div:hover {
-    background-color: black;
 }

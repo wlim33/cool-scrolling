@@ -17,9 +17,6 @@ function makeBoxes(numberOfBoxes) {
 
 }
 
-
-
-
 function hsvToRgb(h, s, v) {
     var r, g, b;
     var h0 = h * 6;
@@ -58,4 +55,11 @@ function hsvToRgb(h, s, v) {
     return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
 }
 
+
 window.onload = makeBoxes(totalBoxes);
+
+
+
+
+
+
