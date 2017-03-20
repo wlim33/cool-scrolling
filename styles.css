@@ -4,14 +4,14 @@ div#title {
     padding-top: 15vh;
     font-size: 20vh;
     text-align: center;
-
-}
-div#center {
-    width: 152vh;
-    margin-left: 19vh;
 }
 
 
+
+.column {
+    width: 24vw;
+    display: inline-block;
+}
 .square {
     height: 34.2vh;
     width: 34.2vh;
@@ -20,9 +20,10 @@ div#center {
     box-shadow: .45vh .45vh .25vh black;
     opacity: 1.0;
     margin: 1.8vh;
-    animation-name: entrance;
-    animation-duration: 3s;
+    animation-name: startup;
+    animation-duration: 2s;
     align-self: center;
+    text-align: center;
 }
 
 body {
@@ -33,11 +34,12 @@ body {
     display: none;
 }
 
-@-webkit-keyframes entrance {
-    from {
-        opacity: 0.0;
-    }
-    to {
-        opacity: 1.0;
-    }
+@-webkit-keyframes startup {
+    from { opacity: 0.0; }
+    to { opacity: 1.0; }
+}
+
+@-webkit-keyframes disappear {
+    0% { opacity: 1.0; }
+    100% { opacity: 0.0; }
 }

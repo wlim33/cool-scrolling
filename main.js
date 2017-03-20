@@ -1,55 +1,46 @@
-var totalBoxes = 100;
+var pageLength = 25;
 var saturation = 0.5;
 var value = 0.95;
 var goldenRatio = 1.61803398875;
 
-var windowY  = window.pageYOffset || document.documentElement.scrollTop;
 
 
 
 function makeBoxes(numberOfBoxes) {
     var hue = Math.random();
+    for (var i = 0; i < 4; i++) {
+        var j = 0;
+        while (j < numberOfBoxes) {
+            var boxSize = 1;
+            var newBlock = document.createElement("div");
+            newBlock.className +=" " + "square";
 
-    for (var i = 0; i < numberOfBoxes; i++) {
-        hue = (addBox(hue) + 1 / goldenRatio) % 1;
-    }
-}
+            //colors the box a square
+            var rgb = hsvToRgb(hue, saturation, value);
+            newBlock.style.backgroundColor = "rgb(" + rgb[0] + ", " + rgb[1] + ", " + rgb[2] + ")";
+            if (rgb[0] % 2 === 0 && j + 2 < numberOfBoxes) {
+                newBlock.style.height = "72vh";
+                boxSize = 2;
+            }
 
-function addBox(hue) {
-    var newBlock = document.createElement("div");
-    newBlock.className = "square";
-    var rgb = hsvToRgb(hue, saturation, value);
-    newBlock.style.backgroundColor = "rgb(" + rgb[0] + ", " + rgb[1] + ", " + rgb[2] + ")";
+            addAnimationTo(newBlock);
+            document.getElementById("partition" + i).appendChild(newBlock);
 
-    addPos(newBlock); //to see when the box is on screen
-
-    document.getElementById("center").appendChild(newBlock);
-
-    return hue;
-}
-
-//function elementIsOnscreen(element) {}
-
-
-function addPos(element) {
-    element.innerHTML = getPos(element);
-}
-
-//NEED TO FIX
-function getPos(element) {
-    var yPos = 0;
-    while (element) {
-        if (element.tagName == "BODY") {
-            var y = element.scrollTop || document.documentElement.scrollTop;
-            yPos = yPos + (element.offsetTop - y + el.clientTop);
-        } else {
-            yPos = yPos + (element.offsetTop - element.scrollTop + element.clientTop);
+            hue = (hue + 1 / goldenRatio) % 1;
+            j = j + boxSize;
         }
-
-        element = element.offsetParent;
     }
-    return yPos;
+
 }
+
+function addAnimationTo(square) {
+    square.addEventListener("click",  function() {
+        this.style.animationName = "disappear";
+
+    });
+    square.addEventListener("webkitAnimationEnd", function() {this.style.animationName = "";});
+}
+
 
 function hsvToRgb(h, s, v) {
     var r, g, b;
@@ -90,7 +81,62 @@ function hsvToRgb(h, s, v) {
 }
 
 
-window.onload = makeBoxes(totalBoxes);
+function onScreenChanged(element) {
+    var event = document.createEvent("Event");
+
+    element.dispatchEvent(event);
+}
+
+function elementIsOnScreen(element) {
+    var rect = element.getBoundingClientRect();
+    var viewHeight = Math.max(document.body.clientHeight, window.innerHeight);
+    return !(rect.bottom < 0 || rect.top - viewHeight >= 0);
+}
+
+
+window.onload = makeBoxes(pageLength);
+
+function scrollRoot() {
+    labelVisibleElements();
+
+    animateListOf();
+}
+
+function labelVisibleElements() {
+    findOnScreenElements();
+    //label the things
+}
+
+//returns a list of elements
+function findOnScreenElements() {
+
+}
+
+
+//returns
+function animateListOf(elements) {
+    elements.map(animate());
+}
+
+//return true if element is appearing
+function animate(element) {
+    if (isAppearing(element)) {
+        appearingAnimation(element);
+    } else {
+        disappearingAnimation(element);
+    }
+}
+
+function isAppearing(element) {
+    return (' ' + element.className + ' ').indexOf(' isAppearing ') > -1;
+
+}
+
+function appearingAnimation(element) {}
+
+function disappearingAnimation(element) {}
+
+window.onscroll = scrollRoot();
 
 
 
