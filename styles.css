@@ -18,10 +18,10 @@ div#title {
     border-radius: 3.75vh;
     display: inline-block;
     box-shadow: .45vh .45vh .25vh black;
-    opacity: 1.0;
+    opacity: 0.0;
     margin: 1.8vh;
-    animation-name: startup;
-    animation-duration: 2s;
+
+    -webkit-transition: opacity 2s;
     align-self: center;
     text-align: center;
 }

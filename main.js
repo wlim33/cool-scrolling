@@ -4,8 +4,6 @@ var value = 0.95;
 var goldenRatio = 1.61803398875;
 
 
-
-
 function makeBoxes(numberOfBoxes) {
     var hue = Math.random();
     for (var i = 0; i < 4; i++) {
@@ -23,7 +21,7 @@ function makeBoxes(numberOfBoxes) {
                 boxSize = 2;
             }
 
-            addAnimationTo(newBlock);
+            //addAnimationTo(newBlock);
             document.getElementById("partition" + i).appendChild(newBlock);
 
             hue = (hue + 1 / goldenRatio) % 1;
@@ -96,51 +94,55 @@ function elementIsOnScreen(element) {
 
 window.onload = makeBoxes(pageLength);
 
-function scrollRoot() {
-    labelVisibleElements();
-
-    animateListOf();
+window.onscroll = function scrollRoot() {
+    getElements("square");
 }
 
-function labelVisibleElements() {
-    findOnScreenElements();
-    //label the things
+function getElements(className) {
+    ;
+    var boxes = document.getElementsByClassName(className);
+
+    for (var i = 0; i < boxes.length; i++) {
+        if (checkVisible(boxes[i])) {
+            animate(boxes[i]);
+        }
+    }
 }
 
-//returns a list of elements
-function findOnScreenElements() {
-
-}
-
-
-//returns
-function animateListOf(elements) {
-    elements.map(animate());
-}
-
-//return true if element is appearing
-function animate(element) {
-    if (isAppearing(element)) {
+function checkVisible(element) {
+    if (isVisible(element)) {
         appearingAnimation(element);
     } else {
         disappearingAnimation(element);
     }
-}
-
-function isAppearing(element) {
-    return (' ' + element.className + ' ').indexOf(' isAppearing ') > -1;
 
 }
 
-function appearingAnimation(element) {}
+function isVisible(element) {
+    var screenTop = Math.round(document.body.scrollTop);
+    var screenBottom = screenTop + window.innerHeight;
 
-function disappearingAnimation(element) {}
+    var elementTop = getElementY(element);
+    var elementBottom = elementTop + Math.round(element.getBoundingClientRect().height);
 
-window.onscroll = scrollRoot();
+    return !(elementBottom < screenTop || elementTop > screenBottom);
+}
+
+function getElementY(element) {
+    var box = element.getBoundingClientRect();
+    var body = document.body;
+    var scrollTop = window.pageYOffset || body.scrollTop;
+    var clientTop = body.clientTop || 0;
+    var top = box.top + scrollTop - clientTop;
+    return Math.round(top);
+}
 
 
+function appearingAnimation(element) {
+    element.style.opacity = 1.0;
+}
 
-
-
-
+function disappearingAnimation(element) {
+    element.style.opacity = 0.0;
+}
 
