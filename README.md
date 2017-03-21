@@ -5,3 +5,4 @@ No libraries and no looking at the original code!
 
 
 Try it out here: https://rawgit.com/wlim33/cool-scrolling/master/index.html
+ 
