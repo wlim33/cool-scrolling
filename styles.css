@@ -1,4 +1,4 @@
-div#title {
+div#header {
     Font-family: 'Franklin Gothic Medium Cond', Arial, sans-serif;
     height: 50vh;
     padding-top: 15vh;
@@ -6,7 +6,7 @@ div#title {
     border-bottom: thick dotted #2a2a2a;
     margin-bottom: 5vh;
 }
-p1 {
+p#title {
     font-size: 6vw;
     font-weight: bolder;
     text-align: center;
@@ -14,7 +14,7 @@ p1 {
     display: block;
     margin: auto;
 }
-p2 {
+p#subtitle {
     font-size: 1.5vw;
     display: block;
     text-align: center;
