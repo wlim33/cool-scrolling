@@ -1,25 +1,42 @@
 div#title {
-    Font-family: "Comic Sans MS", cursive, sans-serif;
-    height: 52vh;
+    Font-family: 'Franklin Gothic Medium Cond', Arial, sans-serif;
+    height: 55vh;
     padding-top: 15vh;
-    font-size: 20vh;
+    text-shadow: 0 0 1vw black;
+}
+p1 {
+    font-size: 6vw;
+    font-weight: bolder;
     text-align: center;
+    color: whitesmoke;
+    display: block;
+    margin: auto;
+}
+p2 {
+    font-size: 1.5vw;
+    display: block;
+    text-align: center;
+    color: darkgrey;
+    margin: auto;
+    padding-top: 2vh;
 }
 
 
 
 .column {
-    width: 24vw;
+    width: 24.2vw;
     display: inline-block;
+    margin: auto;
+    text-align: center;
 }
 .square {
-    height: 34.2vh;
-    width: 34.2vh;
-    border-radius: 3.75vh;
+    height: 16vw;
+    width: 16vw;
+    border-radius: 2vw;
     display: inline-block;
-    box-shadow: .45vh .45vh .25vh black;
+    box-shadow: 0 0 1vw black;
     opacity: 0.0;
-    margin: 1.8vh;
+    margin: 1.2vw;
 
     -webkit-transition: opacity 2s;
     align-self: center;
@@ -27,7 +44,8 @@ div#title {
 }
 
 body {
-    background-color: darkslategrey;
+    background-color: #151515
+;
 }
 
 ::-webkit-scrollbar {
