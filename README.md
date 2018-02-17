@@ -4,7 +4,7 @@ My own implementation of scrollreveal (https://scrollrevealjs.org/) as an exerci
 No libraries and no looking at the original code!
 
 
-Try it out here: wlim33.github.io/cool-scrolling
+Try it out here: https://wlim33.github.io/cool-scrolling
 
 
  
