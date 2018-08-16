@@ -1,8 +1,8 @@
-# Smooth scrolling
+# Smooth viewport animation
 
-Zero dependency JavaScript scrolling animation for web browsers.
+Zero dependency JavaScript viewport animation for web browsers.
 
-Try it out here: https://wlim33.github.io/cool-scrolling
+Try it out here: https://wlim33.github.io/smooth-viewport-handling
 
 
  
